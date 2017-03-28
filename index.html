@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>Team Anaylsis</title>
+    <script type="text/javascript" src="api-thebluealliance.js"></script>
+    <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+	<style>
+		table {
+    			font-family: arial, sans-serif;
+	    		border-collapse: collapse;
+    			width: 100%;
+		}
+
+		td, th {
+    			border: 1px solid #dddddd;
+    			text-align: left;
+    			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+    			background-color: #dddddd;
+		}
+	</style>
+</head>
+
+<body>
+  Year:
+  <input type="text" id="yr">
+  Event code:
+  <input type="text" id="ecode">
+  <input type="submit" onclick="autoGen()">
+	<table id="table">
+    <thead id="th"></thead>
+    <tbody id="tb"></tbody>
+	</table>
+	<script>
+		var rankArray = [];
+		var iteration = 0;
+    var currentName = "team";
+    var otherName = "team";
+    var currentCode = "2017wasno";
+    var autoGen = function() {
+      var x = document.getElementById('yr');
+      var y = document.getElementById('ecode');
+      currentCode = x.value + y.value
+      tba.event.rankings(currentCode, foo);
+    };
+    var foo = function (tba) {
+      $('.remove').remove();
+			$('<tr class="remove" id="header"><th>Rank</th><th>Number</th><th>Name</th></tr>').appendTo('#th');
+	    rankArray=[];
+      for (var i = 1; i <= tba.length; i++) {
+          rankArray.push(tba[i]);
+      }
+      iteration = 0;
+      var getNameForRank = function() {
+        currentName = "frc" + rankArray[iteration][1];
+        tba3.team.get(currentName, parseName);
+      }
+      var parseName = function(tbal) {
+        otherName = tbal.nickname;
+        $('<tr class="remove"><td>' + rankArray[iteration][0] + '</td><td>' + rankArray[iteration][1] + '</td><td>' + otherName + '</td></tr>').appendTo('#tb');
+        iteration = iteration + 1;
+        checkIteration();
+      }
+      getNameForRank();
+      var checkIteration = function() {
+        if (iteration <= rankArray.length) {
+          getNameForRank();
+        }
+      }
+    }
+	</script>
+
+</body>
+
+</html>
