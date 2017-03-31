@@ -32,6 +32,8 @@
   Event code:
   <input type="text" id="ecode">
   <input type="submit" onclick="autoGen()">
+  <br>
+  (2017waamv - Auburn Mountainview)(2017wasno - Glacier Peak)(2017pncmp - Cheney)
 	<table id="table">
     <thead id="th"></thead>
     <tbody id="tb"></tbody>
@@ -50,7 +52,7 @@
     };
     var foo = function (tba) {
       $('.remove').remove();
-			$('<tr class="remove" id="header"><th>Rank</th><th>Number</th><th>Name</th></tr>').appendTo('#th');
+			$('<tr class="remove" id="header"><th>Rank</th><th>Number</th><th>Name</th><th>Record (W-L-T)</th><th>Played</th></tr>').appendTo('#th');
 	    rankArray=[];
       for (var i = 1; i <= tba.length; i++) {
           rankArray.push(tba[i]);
@@ -62,7 +64,7 @@
       }
       var parseName = function(tbal) {
         otherName = tbal.nickname;
-        $('<tr class="remove"><td>' + rankArray[iteration][0] + '</td><td>' + rankArray[iteration][1] + '</td><td>' + otherName + '</td></tr>').appendTo('#tb');
+        $('<tr class="remove"><td>' + rankArray[iteration][0] + '</td><td>' + rankArray[iteration][1] + '</td><td>' + otherName + '</td><td>' + rankArray[iteration][8]  + '</td><td>' + rankArray[iteration][9] + '</td></tr>').appendTo('#tb');
         iteration = iteration + 1;
         checkIteration();
       }
