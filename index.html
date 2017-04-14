@@ -2,18 +2,17 @@
 
   <head>
       <title>Team Anaylsis</title>
+      <script type="text/javascript" src="api-thebluealliance.js"></script>
+      <script
+  			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  			  crossorigin="anonymous"></script>
       <!--Materialize-->
       <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-      <script type="text/javascript" src="api-thebluealliance.js"></script>
-      <script
-  			  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  			  crossorigin="anonymous"></script>
   	<style>
   		table {
       			font-family: arial, sans-serif;
@@ -33,65 +32,94 @@
       body {
         padding: 50px;
       }
+      .padleft {
+        padding-left: 10px;
+      }
   	</style>
+    <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo padleft">5827 Scouting</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="http://lwrobotics.org">Website</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#test1">Event Rankings</a></li>
+        <li class="tab"><a href="#test2">District Rankings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
   </head>
 
+
   <body>
-
-    <input disabled value="2017" type="text" id="yr" class="validate" placeholder="Year">
-    <input type="text" id="ecode" placeholder="Event Code">
-    <input type="submit" onclick="autoGen()">
-    <br>
-    (2017waamv - Auburn Mountainview)(2017wasno - Glacier Peak)(2017pncmp - Cheney)
-    Note: May not work for previous years
-    <div class="loader">
-      <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+    <div id="test1" class="col s12">
+      <input disabled value="2017" type="text" id="yr" class="validate" placeholder="Year">
+      <input type="text" id="ecode" placeholder="Event Code">
+      <a class="waves-effect waves-light btn" type="submit" onclick="autoGen()">Submit</a>
+      <br>
+      (2017waamv - Auburn Mountainview)(2017wasno - Glacier Peak)(2017pncmp - Cheney)
+      Note: May not work for previous years
+      <div class="loader">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="spinner-layer spinner-red">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="spinner-layer spinner-yellow">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="spinner-layer spinner-green">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
         </div>
       </div>
+    	<table id="table">
+        <thead id="th"></thead>
+        <tbody id="tb"></tbody>
+    	</table>
     </div>
-  	<table id="table">
-      <thead id="th"></thead>
-      <tbody id="tb"></tbody>
-  	</table>
+    <div id="test2" class="col s12">Test 2</div>
   	<script>
+      Materialize.toast('Still in Beta Version. Might not work properly', 5000) // 4000 is the duration of the toast
       $('.loader').hide();
   		var rankArray = [];
   		var iteration = 0;
@@ -105,9 +133,10 @@
         tba.event.rankings(currentCode, foo);
       };
       var foo = function (tba) {
+        Materialize.toast('Hold on! This might take a while', 4000) // 4000 is the duration of the toast
         $('.loader').show();
         $('.remove').remove();
-  			$('<tr class="remove" id="header"><th>Rank</th><th>Number</th><th>Name</th><th>Match Points</th><th>Record (W-L-T)</th><th>Played</th><th>Ranking Score</th></tr>').appendTo('#th');
+  			$('<tr class="remove" id="header"><th>Rank</th><th>Number</th><th>Name</th><th>Match Points</th><th>Record (W-L-T)</th><th>Played</th><th>Ranking Score</th><th>Alliance Score</th></tr>').appendTo('#th');
         $('.remove').hide();
   	    rankArray=[];
         for (var i = 1; i <= tba.length; i++) {
@@ -128,7 +157,7 @@
         }
         var parseName = function(tbal) {
           otherName = tbal.nickname;
-          $('<tr class="remove"><td>' + rankArray[iteration][0] + '</td><td>' + rankArray[iteration][1] + '</td><td>' + otherName + '</td><td>' + rankArray[iteration][3] + '</td><td>' + rankArray[iteration][8]  + '</td><td>' + rankArray[iteration][9] + '</td><td>' + rankArray[iteration][2] + '</td></tr>').appendTo('#tb');
+          $('<tr class="remove"><td>' + rankArray[iteration][0] + '</td><td>' + rankArray[iteration][1] + '</td><td>' + otherName + '</td><td>' + rankArray[iteration][3] + '</td><td>' + rankArray[iteration][8]  + '</td><td>' + rankArray[iteration][9] + '</td><td>' + rankArray[iteration][2] + '</td><td>' + rankArray[iteration][3] / rankArray[iteration][9] + '%</td></tr>').appendTo('#tb');
           $('.remove').hide();
           iteration = iteration + 1;
           checkIteration();
