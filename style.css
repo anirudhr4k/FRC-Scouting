@@ -1,0 +1,32 @@
+#logo {
+  padding-left: 20px;
+  font-size: 24px;
+}
+table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+}
+
+td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+}
+
+tr:nth-child(even) {
+      background-color: #dddddd;
+}
+.padleft {
+  padding-left: 10px;
+}
+#test1 {
+  padding: 20px;
+}
+.dataTables_paginate {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.floatedTable {
+  float: left;
+}

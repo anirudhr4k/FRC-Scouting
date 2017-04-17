@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <!-- TBA -->
+    <script src="tba.js"></script>
+  </head>
+  <p id="wait">Please wait... If JavaScript is disabled, please enable it</p>
+  <script>
+    $('body').hide();
+  </script>
+  <body>
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo" id="logo">5827 | Code Purple - Scouting</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+            <li><a href="http://lwrobotics.org">Website</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="http://lwrobotics.org">Website</a></li>
+        </ul>
+      </div>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a class="active" href="#test1">Event Rankings</a></li>
+          <li class="tab"><a href="#test2">District Rankings</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="test1" class="col s12">
+      <script>
+        $(document).ready(function() {
+          $('select').material_select();
+        });
+      </script>
+      <div id="test1" class="col s12">
+        <div class="row">
+          <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="This application was designed to be used only with the 2017 year, and is not modified for other years. If you really, really want to change the year and check the results, open Developer Console (F12 on most browsers) and change my value to the year that you want to use. Don't say I did not warn you though...">info_outline</i>
+          <input disabled value="2017" type="text" id="yr" class="validate" placeholder="Year" style="width: 97.8%;">
+        </div>
+        <div class="input-field col s12">
+          <select id="selector">
+            <option value="0" disabled selected>Choose your event</option>
+            <option value="0">I'll type in the event code</option>
+            <option value="flwp">South Florida Regional</option>
+            <option value="mndu">Lake Superior Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mxtl">Toluca Regional</option>
+            <option value="scmb">Palmeto Regional</option>
+            <option value="txlu">Hub City Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+            <option value="mndu2">Northern Lights Regional</option>
+          </select>
+        </div>
+        <input type="text" id="ecode" placeholder="Type in the event code! Don't use this if you selected from the list">
+        <div class="row">
+          <a class="waves-effect waves-light btn" type="submit" onclick="autoGen()" style="float: left;">Submit</a>
+          <div class="switch" style="float: left; padding-left: 5px;">
+            Get new info every time:
+            <label>
+              Off
+              <input type="checkbox" id="newInfo">
+              <span class="lever"></span>
+              On
+            </label>
+            <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="If this is on, then new info will be retrieved every time. If this is off, however, any results you have already have gotten will be displayed.">info_outline</i>
+          </div>
+        </div>
+        <br>
+        <div class="loader">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      	<table id="table">
+          <thead id="th"></thead>
+          <tbody id="tb"></tbody>
+      	</table>
+    </div>
+    <div id="test2" class="col s12">Test 2</div>
+    <script src="dataTables.min.js"></script>
+    <script src="eventScout.js"></script>
+  </body>
+</html>
